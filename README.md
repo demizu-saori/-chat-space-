@@ -1,37 +1,5 @@
 # README
 
-## memberテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-
-## Associations
-- belongs_to :group
-- belongs_to :user
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
