@@ -7,6 +7,24 @@
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
+## userテーブル
+
+
+## messageテーブル
+|Column|Type|Options|
+|------|----|-------|
+|message|text|null: false, foreign_key: true|
+|image|text|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+## groupテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|text|null: false, foreign_key: true|
+
+
+
 ## Associations
 - belongs_to :group
 - belongs_to :user
