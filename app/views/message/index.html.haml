@@ -1,14 +1,38 @@
 .notice-box
-  .notice-box__message お知らせメッセージ
-.chat-side
-  .side-header
-    .side-header__box
-      .side-header__box__user-name
-        こんにちはリラックマさん
-        %ul(class="side-hedder__box__menu")
-          %li(class="side-hedder__box__menu__create-group-icon")<> △
-          %li(class="side-hedder__box__menu__edit-account-icon")<> ▲
-  .chat-side-group-wrapper
+  %p.notice-box__message お知らせメッセージ
+.side
+  .side__header
+    .side__header__box
+      %p.side__header__box__user-name リラックマ
+      %ul.side__header__box__menu
+        %li.side__header__box__menu__create-group-icon<
+          %a{href: '#'}<>
+            %i.fa.fa-edit
+        %li.side__header__box__menu__edit-account-icon<
+          %a{href: '#'}<>
+            %i.fa.fa-cog
   .chat-side-groups
-    .__group-name グループ名
-    .__group-message トーク内容
+    .chat-side-group
+      %p.__group-name グループ名
+      %p.__group-message トーク内容
+.chat-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group グループ名
+      %ul.main-header__left-box__member-list
+        %li.main-header__left-box__member-list-member<>
+        menber
+    %a{ href: '#', class: "main-header__edit-btn Edit" }Edit
+  .messages
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker リラックマ
+        %p.message__upper-info__date 2019.04.01
+      .message__text こんにちは。
+  .form
+    %form{class: "new__message", id: "new__message",action:"",method: "post"}
+      .input-box
+        %input{placeholder: "new message",class: "input-box__text",type: "text",name: "message"}
+        %label{class: "input-box__image"}
+          %i.fa.fa-image
+        %input{type: "submit",value: "send",class: "submit-btn"}
