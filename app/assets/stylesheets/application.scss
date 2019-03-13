@@ -22,7 +22,7 @@ a {
 .notice-box {
   background-color: #38AEF0;
 
-  .notice-box__message {
+  &__message {
     color: #FFFFFF;
     text-align: center;
   }
@@ -46,34 +46,35 @@ a {
       justify-content: space-between;
       width: 100%;
 
-        p.side__header__box__user-name {
+        &__user-name {
           font-size: 16px;
           font-weight: bold;
         }
 
         ul.side__header__box__menu {
           display: flex;
+
           i.fa {
             color: white;
           }
-        }
+      }
     }
   }
-  .chat-side-groups {
+  .chat-side__groups {
     background-color: #2f3e51;
     padding: 20px 20px 0;
     height: 100vh;
     overflow: scroll;
 
-    .chat-side-group {
+    .chat-side__group {
       margin-bottom: 40px;
 
-      p.__group-name {
+      &-name {
         font-size: 15px;
         margin-bottom: 5px;
       }
 
-      p.__group-message {
+      &-message {
         font-size: 11px;
       }
     }
@@ -89,15 +90,15 @@ a {
     padding:0 40px;
     border-bottom: solid 1px #eeeeee;
 
-    .main-header__left-box {
+    &__left-box {
       margin-top: 35px;
     }
-      .main-header__left-box__current-group {
+      .main-header__current-group {
         font-size: 20px;
         color: #333;
         margin-bottom: 15px;
       }
-    .main-header__edit-btn {
+    &__edit-btn {
       line-height: 40px;
       margin-top: 28px;
       padding: 0 20px;
@@ -118,22 +119,22 @@ a {
     .message {
       padding-bottom: 40px;
 
-      .message__upper-info {
+      &__upper-info {
         display: flex;
         margin-bottom: 10px;
 
-        p.message__upper-info__talker {
+        &__talker {
           color: #434A54;
           font-weight: bold;
           font-size: 16px;
         }
-        p.message__upper-info__date {
+        &__date {
           color: #999999;
           font-size: 12px;
           margin-left: 10px;
         }
       }
-      .message__text {
+      &__text {
         color: #434A54;
         font-size: 14px;
       }
@@ -149,13 +150,13 @@ a {
       position: relative;
       display: flex;
 
-      .input-box__text {
+      &__text {
         height: 50px;
         width: 100%;
         color: black;
         padding: 0 40px 0 10px;
       }
-      .input-box__image {
+      &__image {
         position: absolute;
         top: 10px;
         right: 130px;
