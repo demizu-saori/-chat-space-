@@ -15,6 +15,7 @@ ul,li {
 a {
   text-decoration: none;
 }
+
 .notice-box {
   background-color: #38AEF0;
 
@@ -46,14 +47,11 @@ a {
           float:left;
         }
 
-        &__menu {
-          .icon {
-            margin-left: 0.3rem;
-            color: white;
-            float: right;
-          }
+        .icon {
+          margin-left: 0.3rem;
+          color: white;
+          float: right;
         }
-
     }
   }
   .chat-side__groups {
@@ -94,7 +92,7 @@ a {
         color: #333;
         margin-bottom: 15px;
       }
-      &__left-box__member-list{
+      &__left-box__member-list {
         display: flex;
         font-size: 12px;
         color: #999999;
