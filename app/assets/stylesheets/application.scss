@@ -1,4 +1,39 @@
 @import "./reset";
-@import "font-awesome";
-@import "font-awesome-sprockets";
-@import "./main.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+ul,li {
+  list-style: none;
+}
+
+.notice-box {
+  background-color: #38AEF0;
+
+  &.__message {
+    color: #FFFFFF;
+  }
+}
+
+.chat-side {
+  color: white;
+  background-color: #253141;
+  width: 300px;
+  float: left;
+
+  &.-header {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &.-groups {
+    padding: 20px 20px 20px;
+  }
+}
