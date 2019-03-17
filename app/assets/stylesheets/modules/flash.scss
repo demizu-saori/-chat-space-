@@ -2,11 +2,11 @@
   color: $white;
   text-align: center;
 
-  &-notice {
+  &__notice {
     background-color: $light_blue;
   }
 
-  &-alert {
+  &__alert {
     background-color: $alert_orange;
   }
 }
