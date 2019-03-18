@@ -19,7 +19,7 @@ belongs_to :group
 has_many :messages
 has_many :groups
 belongs_to :group
-through:groups_users
+through:group_users
 ====================================================
 ##groups table
 |Column|Type|Options|
@@ -28,10 +28,13 @@ through:groups_users
 ###Association
 has_many :groups_users
 has_many :messages
-through:groups_users
+through:group_users
 ====================================================
-##groups_users table
+##group_users table
 |Column|Type|Options|
 |------|----|-------|
 |group_id|references|null: false,foreign_key: true|
 |user_id|references|null: false,foreign_key: true|
+###Association
+belongs_to :group
+belongs_to :user
