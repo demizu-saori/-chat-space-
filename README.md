@@ -17,18 +17,15 @@ belongs_to :group
 |name|string|null: false,unique: true,index:true|
 ###Association
 has_many :messages
-has_many :groups
-belongs_to :group
-through:group_users
+has_many :groups,through:group_users
 ====================================================
 ##groups table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ###Association
-has_many :groups_users
+has_many :groups_users,through:group_users
 has_many :messages
-through:group_users
 ====================================================
 ##group_users table
 |Column|Type|Options|
