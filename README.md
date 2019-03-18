@@ -3,7 +3,7 @@
 ##messages table
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|text|text||
 |image|string||
 |user_id|references|foreign_key: true|
 |group_id|references|foreign_key: true|
