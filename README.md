@@ -1,6 +1,6 @@
 ## DB
-
-## messages table
+====================================================
+##messages table
 |Column|Type|Options|
 |------|----|-------|
 |text|text||
@@ -37,7 +37,7 @@
 - has_many :group_users
 
 ====================================================
-## group_users table
+##group_users table
 |Column|Type|Options|
 |------|----|-------|
 |group_id|references|null: false,foreign_key: true|
