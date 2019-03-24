@@ -107,7 +107,7 @@ a {
       position: absolute;
       right:40px;
       top:30px;
-      color: blue;
+      color: $light_blue;
     }
   }
   .messages {
@@ -124,18 +124,18 @@ a {
         margin-bottom: 10px;
 
         &__talker {
-          color: #434A54;
+          color: $black;
           font-weight: bold;
           font-size: 16px;
         }
         &__date {
-          color: #999999;
+          color: $light_gray;
           font-size: 12px;
           margin-left: 10px;
         }
       }
       &__text {
-        color: #434A54;
+        color: $black;
         font-size: 14px;
       }
     }
@@ -167,7 +167,7 @@ a {
         width: 100px;
         padding: 0 30px;
         margin-left: 15px;
-        background-color: #38aef0;
+        background-color: $light_blue;
         color: white;
         cursor: pointer;
       }
