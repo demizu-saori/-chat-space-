@@ -1,4 +1,4 @@
-## DB設計
+## DB
 
 ### messages table
 |Column|Type|Options|
