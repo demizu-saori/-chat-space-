@@ -14,9 +14,10 @@
         %p.message__upper-info__date 2019.04.01
       .message__text こんにちは。
   .form
-    %form{class: "new__message", id: "new__message",action:"",method: "post"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: "new__message", placeholder: 'type a message'
       .input-box
-        %input{placeholder: "new message",class: "input-box__text",type: "text",name: "message"}
-        %label{class: "input-box__image"}
-          %i.fa.fa-image
-        %input{type: "submit",value: "send",class: "submit-btn"}
+        = f.label :image, class: "input-box__image"
+          = fa_icon 'picture-o', class: 'idon'
+          = f.file_field :image, class: 'hidden'
+      =f.submit 'send', class: "submit-btn"
