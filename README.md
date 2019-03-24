@@ -1,4 +1,4 @@
-#DB
+#README
 ====================================================
 ##messages table
 |Column|Type|Options|
