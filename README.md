@@ -9,7 +9,8 @@
 |group_id|references|foreign_key: true|
 
 #### Association
-belongs_to :user  belongs_to :group
+belongs_to :user
+belongs_to :group
 
 ====================================================
 ## users table
@@ -19,7 +20,8 @@ belongs_to :user  belongs_to :group
 
 #### Association
 
-has_many :messages  has_many :groups,through:group_users  has_many :group_users
+has_many :messages
+has_many :groups,through:group_users  has_many :group_users
 
 ====================================================
 ## groups table
@@ -29,7 +31,9 @@ has_many :messages  has_many :groups,through:group_users  has_many :group_users
 
 #### Association
 
-has_many :groups_users,through:group_users  has_many :messages  has_many :group_users
+has_many :groups_users,through:group_users
+has_many :messages
+has_many :group_users
 
 ====================================================
 ## group_users table
@@ -39,4 +43,5 @@ has_many :groups_users,through:group_users  has_many :messages  has_many :group_
 |user_id|references|null: false,foreign_key: true|
 
 #### Association
-belongs_to :group  belongs_to :user
+belongs_to :group
+belongs_to :user
