@@ -1,2 +1,4 @@
 .wrapper
   = render 'groups/side'
+  .messages
+    = render partial: 'message/message', collection: @groups
