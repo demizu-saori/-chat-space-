@@ -4149,3 +4149,2055 @@ Migrating to CreateMessages (20190324065013)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
 Migrating to CreateMessages (20190324065013)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('8445024276154775190')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('8445024276154775190', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateMessages (20190324065013)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('8445024276154775190')[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (116.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS `chat-space_development`[0m
+  [1m[35m (3.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `chat-space_test`[0m
+  [1m[35m (54.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT GET_LOCK('8445024276154775190', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to DeviseCreateUsers (20190316133052)
+  [1m[35m (50.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_users_on_name`  (`name`)) ENGINE=InnoDB[0m
+  [1m[35m (30.7ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (54.0ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190316133052')[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroups (20190317150724)
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE TABLE `groups` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190317150724')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroupUsers (20190317150759)
+  [1m[35m (59.5ms)[0m  [1m[35mCREATE TABLE `group_users` (`id` int AUTO_INCREMENT PRIMARY KEY, `group_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_group_users_on_group_id`  (`group_id`),  INDEX `index_group_users_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_a9d5f48449`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+, CONSTRAINT `fk_rails_1486913327`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190317150759')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20190324065013)
+  [1m[35m (69.5ms)[0m  [1m[35mCREATE TABLE `messages` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` varchar(255), `image` varchar(255), `group_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_messages_on_group_id`  (`group_id`),  INDEX `index_messages_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_841b0ae6ac`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+, CONSTRAINT `fk_rails_273a25a7a6`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190324065013')[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (7.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-03-24 08:07:08', '2019-03-24 08:07:08')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('8445024276154775190')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (7.0ms)[0m  [1m[35mSHOW CREATE TABLE `group_users`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `groups`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'groups'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `messages`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'messages'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Started GET "/" for 127.0.0.1 at 2019-03-24 17:08:07 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 271ms (ActiveRecord: 128.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-24 17:08:07 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (4.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (76.2ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-24 17:08:10 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (6.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (38.5ms)
+  Rendered layouts/_flash.html.haml (12.8ms)
+Completed 200 OK in 7306ms (Views: 7301.6ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_flash.html.haml (95.1ms)
+Completed 200 OK in 10996ms (Views: 10937.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:35:46 +0900
+Processing by GroupsController#index as HTML
+Completed 401 Unauthorized in 22ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-25 21:35:46 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (8.4ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (58.2ms)
+  Rendered layouts/_flash.html.haml (6.6ms)
+Completed 200 OK in 182ms (Views: 169.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-03-25 21:35:50 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (2.8ms)
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_haml__1928938953960136866_70283383548820 at /Users/demizusaori/Desktop/Git hub/chat-space/app/views/devise/registrations/new.html.haml:9)
+  Rendered devise/registrations/new.html.haml within layouts/application (19.4ms)
+  Rendered layouts/_flash.html.haml (2.7ms)
+Completed 200 OK in 81ms (Views: 78.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-25 21:36:11 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EfhfiPqqoi1yZGfqcnmXaeMfz5hgvX3X9kgUlrYq1jUfRmtPZLy6xhU8V8Q2fz+L52rdDPPb6igjiE5lryAaew==", "user"=>{"name"=>"リラックマ", "email"=>"sssuica@outlook.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (8.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (52.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sssuica@outlook.jp' LIMIT 1[0m
+  [1m[35mSQL (24.1ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('リラックマ', 'sssuica@outlook.jp', '$2a$11$Be62INtQBWe8qUSU7NyD7.WU1bSMmsG2WNBuHAN7Jf9iLj4lhBm1.', '2019-03-25 12:36:11', '2019-03-25 12:36:11')[0m
+  [1m[35m (21.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 387ms (ActiveRecord: 105.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:36:11 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (149.9ms)
+  Rendered groups/index.html.haml within layouts/application (157.6ms)
+  Rendered layouts/_flash.html.haml (2.6ms)
+Completed 200 OK in 258ms (Views: 182.4ms | ActiveRecord: 68.3ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2019-03-25 21:36:18 +0900
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/new.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  Rendered groups/_form.html.haml (115.9ms)
+  Rendered groups/new.html.haml within layouts/application (128.2ms)
+  Rendered layouts/_flash.html.haml (5.2ms)
+Completed 200 OK in 237ms (Views: 189.1ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/groups" for 127.0.0.1 at 2019-03-25 21:36:26 +0900
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TLIqq0bAgvarN1IXA5YdDH1ie5qFTs36kpHRCVbyaUEWzA41W+2Us7EhLb/mKlwNMEleJMPW6uls26QiahTRxw==", "group"=>{"name"=>"コリラックマを愛する会", "user_ids"=>["", "1"]}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `groups` (`name`, `created_at`, `updated_at`) VALUES ('コリラックマを愛する会', '2019-03-25 12:36:26', '2019-03-25 12:36:26')[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO `group_users` (`user_id`, `created_at`, `updated_at`) VALUES (1, '2019-03-25 12:36:26', '2019-03-25 12:36:26')[0m
+  [1m[35mSQL (32.3ms)[0m  [1m[33mUPDATE `group_users` SET `group_id` = 1 WHERE `group_users`.`id` = 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 64ms (ActiveRecord: 36.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:36:26 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (2.0ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (12.4ms)
+  Rendered groups/index.html.haml within layouts/application (18.1ms)
+  Rendered layouts/_flash.html.haml (2.8ms)
+Completed 200 OK in 65ms (Views: 58.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:37 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (23.3ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.8ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (223.0ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:38 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (10.7ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (187.2ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:39 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (8.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:39 +0900
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (201.1ms)
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:39 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:40 +0900
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (13.4ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (255.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (8.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (313.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (8.7ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (188.6ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:36:46 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (16.7ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (193.5ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:36:49 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (24.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (2.0ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (12.7ms)
+  Rendered groups/index.html.haml within layouts/application (22.8ms)
+  Rendered layouts/_flash.html.haml (3.0ms)
+Completed 200 OK in 122ms (Views: 89.4ms | ActiveRecord: 26.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:45:06 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (10.6ms)
+  Rendered groups/index.html.haml within layouts/application (14.6ms)
+  Rendered layouts/_flash.html.haml (3.3ms)
+Completed 200 OK in 62ms (Views: 54.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:45:09 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (6.5ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (179.8ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:50:43 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (6.2ms)
+  Rendered groups/index.html.haml within layouts/application (11.4ms)
+  Rendered layouts/_flash.html.haml (2.7ms)
+Completed 200 OK in 594ms (Views: 588.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:51:58 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (5.9ms)
+  Rendered groups/index.html.haml within layouts/application (10.6ms)
+  Rendered layouts/_flash.html.haml (1.9ms)
+Completed 200 OK in 53ms (Views: 47.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:53:25 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (7.4ms)
+  Rendered groups/index.html.haml within layouts/application (15.6ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    1: .wrapper
+    2:   = render 'groups/side'
+    3:   .messages
+    4:     = render @messages
+  
+app/views/groups/index.html.haml:4:in `_app_views_groups_index_html_haml__2640598025439642292_70283394533820'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (146.4ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 21:53:58 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (6.5ms)
+  Rendered collection of message/_message.html.haml [0 times] (0.0ms)
+  Rendered groups/index.html.haml within layouts/application (13.9ms)
+  Rendered layouts/_flash.html.haml (1.8ms)
+Completed 200 OK in 67ms (Views: 57.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/message.index" for 127.0.0.1 at 2019-03-25 21:56:15 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/message.index"):
+  
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (6.3ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (217.8ms)
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 21:57:00 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (6.6ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (241.4ms)
+Started GET "/message.index" for 127.0.0.1 at 2019-03-25 22:33:34 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/message.index"):
+  
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (8.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (226.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:33:37 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (9.5ms)
+  Rendered groups/index.html.haml within layouts/application (14.1ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 27.7ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/models/group.rb:14: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/models/group.rb:14: syntax error, unexpected end-of-input, expecting keyword_end
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283383008920'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283352230740'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (155.5ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:33:57 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  Rendered groups/_side.html.haml (50.4ms)
+  Rendered groups/index.html.haml within layouts/application (56.4ms)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 10.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `message' for #<Group:0x00007fd841930ca8>
+Did you mean?  messages
+               messages=):
+    17:           .side__group__name
+    18:             = group.name
+    19:           .side__group__message
+    20:             = group.show_last_message
+  
+app/models/group.rb:9:in `show_last_message'
+app/views/groups/_side.html.haml:20:in `block (2 levels) in _app_views_groups__side_html_haml__2139462496743283930_70283392020760'
+app/views/groups/_side.html.haml:16:in `block in _app_views_groups__side_html_haml__2139462496743283930_70283392020760'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283392020760'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283351787280'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (158.8ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:35:09 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  `messages`.* FROM `messages` WHERE `messages`.`group_id` = 1 ORDER BY `messages`.`id` DESC LIMIT 1[0m
+  Rendered groups/_side.html.haml (65.2ms)
+  Rendered collection of message/_message.html.haml [0 times] (0.0ms)
+  Rendered groups/index.html.haml within layouts/application (77.0ms)
+  Rendered layouts/_flash.html.haml (2.0ms)
+Completed 200 OK in 134ms (Views: 90.1ms | ActiveRecord: 30.3ms)
+
+
+Started GET "/groups/1/messages" for 127.0.0.1 at 2019-03-25 22:35:14 +0900
+  
+ActionController::RoutingError (uninitialized constant MessagesController):
+  
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.7.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.7.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.7.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.7.1) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.7.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [27 times] (7.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (179.2ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:47:07 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (2.5ms)
+  Rendered groups/_side.html.haml (15.4ms)
+  Rendered groups/index.html.haml within layouts/application (27.0ms)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 7.4ms)
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 6 spaces used for indentation, but the rest of the document was indented using 4 spaces.):
+    1: .side__groups
+    2:     - current_user.groups.each do |group|
+    3:       .side__group
+    4:         = link_to group_messages_path(group) do
+    5:           .side__group__name
+    6:             = group.name
+  
+app/views/groups/_group.html.haml:3
+app/views/groups/_side.html.haml:13:in `_app_views_groups__side_html_haml__2139462496743283930_70283384303140'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283392073000'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (17.4ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (214.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:48:36 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (2.7ms)
+  Rendered groups/_side.html.haml (9.4ms)
+  Rendered groups/index.html.haml within layouts/application (14.3ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:5: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+...</div>\n</div>\n".freeze);; end;; _hamlout.buffer << ("</div...
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:12: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_group.html.haml:5: syntax error, unexpected ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:12: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:13:in `_app_views_groups__side_html_haml__2139462496743283930_70283396860120'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283396963700'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (158.6ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:50:24 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (2.5ms)
+  Rendered groups/_side.html.haml (9.3ms)
+  Rendered groups/index.html.haml within layouts/application (13.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.6ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:5: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+...</div>\n</div>\n".freeze);; end;; _hamlout.buffer << ("</div...
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:12: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_group.html.haml:5: syntax error, unexpected ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_group.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:12: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:13:in `_app_views_groups__side_html_haml__2139462496743283930_70283378204500'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283390328540'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (145.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:55:26 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (390.9ms)
+  Rendered groups/index.html.haml within layouts/application (395.2ms)
+Completed 500 Internal Server Error in 410ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `groups' for #<#<Class:0x00007fd841dd8210>:0x00007fd841890500>
+Did you mean?  groups_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render groups
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283379434940'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283394584540'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (139.4ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:56:44 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (470.1ms)
+  Rendered groups/index.html.haml within layouts/application (475.7ms)
+Completed 500 Internal Server Error in 491ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group' for #<#<Class:0x00007fd841dd8210>:0x00007fd8404be8d8>
+Did you mean?  group_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'groups/group', logals:{group: group}
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283379758260'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283384191200'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (142.3ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:57:19 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (362.8ms)
+  Rendered groups/index.html.haml within layouts/application (371.3ms)
+Completed 500 Internal Server Error in 394ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group' for #<#<Class:0x00007fd841dd8210>:0x00007fd840100d18>
+Did you mean?  group_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'groups/group', locals:{group: group}
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283351513240'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283382229760'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (156.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:57:53 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (436.3ms)
+  Rendered groups/index.html.haml within layouts/application (443.4ms)
+Completed 500 Internal Server Error in 458ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group' for #<#<Class:0x00007fd841dd8210>:0x00007fd83ac72f30>
+Did you mean?  group_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'groups/group', locals: { group: group }
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283349957860'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283337909900'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (145.3ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:58:06 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (416.2ms)
+  Rendered groups/index.html.haml within layouts/application (420.5ms)
+Completed 500 Internal Server Error in 437ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group' for #<#<Class:0x00007fd841dd8210>:0x00007fd841921848>
+Did you mean?  group_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'group', locals: { group: group }
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283384100540'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283394879860'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (183.5ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:58:34 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (499.9ms)
+  Rendered groups/index.html.haml within layouts/application (504.8ms)
+Completed 500 Internal Server Error in 523ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `groups' for #<#<Class:0x00007fd841dd8210>:0x00007fd841818230>
+Did you mean?  groups_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'group', locals: { groups: groups }
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283379222820'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283394336140'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (140.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:58:47 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (389.2ms)
+  Rendered groups/index.html.haml within layouts/application (394.9ms)
+Completed 500 Internal Server Error in 417ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `groups' for #<#<Class:0x00007fd841dd8210>:0x00007fd840122148>
+Did you mean?  groups_url):
+    11:         = link_to edit_user_path(current_user) do
+    12:           =fa_icon 'cog',class: 'icon'
+    13:   .side__groups
+    14:   = render partial: 'group', locals: { group: groups }
+  
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283392306080'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283382297940'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (140.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 22:59:04 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (2.5ms)
+  Rendered groups/_side.html.haml (14.3ms)
+  Rendered groups/index.html.haml within layouts/application (19.5ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 6 spaces used for indentation, but the rest of the document was indented using 4 spaces.):
+    1: - current_user.groups.each do |group|
+    2:     .side__group
+    3:       = link_to group_messages_path(group) do
+    4:       .side__group__name
+    5:         = group.name
+    6:       .side__group__message
+  
+app/views/groups/_group.html.haml:3
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283379879920'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283391972500'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (165.4ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:00:11 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (2.9ms)
+  Rendered groups/_side.html.haml (8.6ms)
+  Rendered groups/index.html.haml within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 2.8ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:4: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+...</div>\n</div>\n".freeze);; end;::Haml::Util.html_safe(_erbo...
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:11: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_group.html.haml:4: syntax error, unexpected ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:11: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283383010360'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283382961680'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (155.2ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:01:53 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (3.2ms)
+  Rendered groups/_side.html.haml (9.8ms)
+  Rendered groups/index.html.haml within layouts/application (13.9ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:4: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+...\n</p>\n</div>\n".freeze);; end;::Haml::Util.html_safe(_erbo...
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:11: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_group.html.haml:4: syntax error, unexpected ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_group.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_group.html.haml:11: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283395738100'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283384792040'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (159.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:02:32 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (3.2ms)
+  Rendered groups/_side.html.haml (10.6ms)
+  Rendered groups/index.html.haml within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_group.html.haml:11: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/groups/_group.html.haml:11: syntax error, unexpected end-of-input, expecting keyword_end
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283393977340'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283397775620'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (141.0ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:04:46 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.0ms)
+  Rendered groups/_side.html.haml (12.6ms)
+  Rendered groups/index.html.haml within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) do
+    2:   .side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283378785000'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283382995980'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283352230280'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (157.7ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:06:19 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.9ms)
+  Rendered groups/_side.html.haml (11.4ms)
+  Rendered groups/index.html.haml within layouts/application (16.5ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283384434300'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283384506540'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283395525880'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (144.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:06:47 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.6ms)
+  Rendered groups/_side.html.haml (13.8ms)
+  Rendered groups/index.html.haml within layouts/application (17.9ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283385693100'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283397657640'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283380722880'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (140.8ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:19:07 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (447.1ms)
+  Rendered groups/_side.html.haml (453.8ms)
+  Rendered groups/index.html.haml within layouts/application (459.7ms)
+Completed 500 Internal Server Error in 480ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group_id' for #<#<Class:0x00007fd841dd8210>:0x00007fd840295048>
+Did you mean?  group):
+    1: = link_to group_messages_path(group_id) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283378849160'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283378963700'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283383057820'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (168.3ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:19:21 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (4.6ms)
+  Rendered groups/_side.html.haml (15.1ms)
+  Rendered groups/index.html.haml within layouts/application (21.8ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283384436120'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283395363560'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283384381860'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (162.4ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:22:09 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.0ms)
+  Rendered groups/_side.html.haml (12.4ms)
+  Rendered groups/index.html.haml within layouts/application (16.7ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 26.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283394502920'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283383680920'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283379584320'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (145.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:25:10 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (4.8ms)
+  Rendered groups/_side.html.haml (11.1ms)
+  Rendered groups/index.html.haml within layouts/application (15.3ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283392487520'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283392568680'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283395707800'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (152.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:25:24 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (6.1ms)
+  Rendered groups/_side.html.haml (12.2ms)
+  Rendered groups/index.html.haml within layouts/application (17.9ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283397871520'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283385706500'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283393854700'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (138.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:30:04 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.1ms)
+  Rendered groups/_side.html.haml (13.9ms)
+  Rendered groups/index.html.haml within layouts/application (19.5ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283390981720'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283352084060'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283382845540'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.6ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (161.8ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:33:27 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (7.4ms)
+  Rendered groups/_side.html.haml (14.4ms)
+  Rendered groups/index.html.haml within layouts/application (23.7ms)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(@group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283391948760'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283351790160'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283394941400'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (155.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:34:03 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (446.1ms)
+  Rendered groups/_side.html.haml (453.2ms)
+  Rendered groups/index.html.haml within layouts/application (460.6ms)
+Completed 500 Internal Server Error in 477ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `group_id' for #<#<Class:0x00007fd841ab5f38>:0x00007fd841670dd8>
+Did you mean?  group):
+    1: = link_to group_messages_path(group,group_id) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283380456380'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283397075560'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283393469300'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (150.2ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:34:23 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_group.html.haml (5.3ms)
+  Rendered groups/_side.html.haml (17.3ms)
+  Rendered groups/index.html.haml within layouts/application (25.8ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"messages", :group_id=>nil} missing required keys: [:group_id]):
+    1: = link_to group_messages_path(group) ,class: "chat-group__link" do
+    2:   %li.side__group
+    3:     %p.side__group__name
+    4:       = group.name
+  
+app/views/groups/_group.html.haml:1:in `_app_views_groups__group_html_haml__2029826535329668013_70283378336120'
+app/views/groups/_side.html.haml:14:in `_app_views_groups__side_html_haml__2139462496743283930_70283382684100'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283378424560'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (143.8ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:38:52 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (4.4ms)
+  Rendered groups/index.html.haml within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.8ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283392292760'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (239.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:39:28 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (5.5ms)
+  Rendered groups/index.html.haml within layouts/application (10.5ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283380531600'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (171.1ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:40:57 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (4.7ms)
+  Rendered groups/index.html.haml within layouts/application (9.4ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283378631000'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (142.5ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:42:35 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (6.9ms)
+  Rendered groups/index.html.haml within layouts/application (19.9ms)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_side.html.haml:15: syntax error, unexpected ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_side.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:23: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283395443640'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.9ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.4ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (415.6ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:44:45 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  Rendered groups/_side.html.haml (4.9ms)
+  Rendered groups/index.html.haml within layouts/application (10.1ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.8ms)
+
+
+  
+SyntaxError (/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:17: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.bu...
+^
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+..."\n</p>\n</li>\n".freeze);; end;; _hamlout.buffer << ("</div...
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_ensure, expecting ')'
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                         ^~~~~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+...uffer.upper if @haml_buffer;end;
+...                            ^~~
+/Users/demizusaori/Desktop/Git hub/chat-space/app/views/groups/_side.html.haml:25: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/groups/_side.html.haml:17: syntax error, unexpected ')'
+app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/groups/_side.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/_side.html.haml:25: syntax error, unexpected keyword_end, expecting ')'
+app/views/groups/index.html.haml:2:in `_app_views_groups_index_html_haml__2640598025439642292_70283380747320'
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/demizusaori/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (141.9ms)
+Started GET "/" for 127.0.0.1 at 2019-03-25 23:45:05 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 1[0m
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT  `messages`.* FROM `messages` WHERE `messages`.`group_id` = 1 ORDER BY `messages`.`id` DESC LIMIT 1[0m
+  Rendered groups/_side.html.haml (96.4ms)
+  Rendered collection of message/_message.html.haml [0 times] (0.0ms)
+  Rendered groups/index.html.haml within layouts/application (106.3ms)
+  Rendered layouts/_flash.html.haml (3.2ms)
+Completed 200 OK in 172ms (Views: 114.4ms | ActiveRecord: 52.6ms)
+
+
