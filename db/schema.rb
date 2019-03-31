@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20190324065013) do
-
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -54,6 +53,8 @@ ActiveRecord::Schema.define(version: 20190324065013) do
 
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
+
 end
