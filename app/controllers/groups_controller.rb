@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
     else
       flash.now[:alert] = 'グループ名を入力してください'
      redirect_to root_path
-    else
       render :new
     end
   end
